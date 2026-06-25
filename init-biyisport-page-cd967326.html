@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>必一体育 · 产品说明</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f2f7fa;
+      color: #1e2c3a;
+      line-height: 1.6;
+      padding: 1.25rem 1rem 3rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* 卡片网格基座 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin: 2rem 0;
+    }
+
+    @media (min-width: 600px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 1.5rem 1.25rem;
+      box-shadow: 0 4px 12px rgba(0, 40, 50, 0.06);
+      border-left: 5px solid #2a9d8f;
+      transition: box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 22px rgba(42, 157, 143, 0.12);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      margin-bottom: 0.5rem;
+      color: #1d3557;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3::before {
+      content: "◇";
+      color: #2a9d8f;
+      font-weight: 400;
+      font-size: 1.1rem;
+    }
+
+    .card p, .card li {
+      font-size: 0.95rem;
+      color: #2f3e4e;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0.2rem;
+    }
+
+    li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* hero / 摘要区 */
+    .hero {
+      padding: 1.8rem 0 1rem;
+      border-bottom: 2px solid rgba(42, 157, 143, 0.2);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #1e3a5f;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .hero .sub {
+      font-size: 1.1rem;
+      color: #2a9d8f;
+      font-weight: 400;
+      margin-top: 0.5rem;
+      border-left: 4px solid #2a9d8f;
+      padding-left: 0.8rem;
+      background: rgba(42, 157, 143, 0.04);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .intro-text {
+      margin: 1.2rem 0 0.8rem;
+      background: #ffffffd9;
+      padding: 1.2rem 1.4rem;
+      border-radius: 28px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .intro-text p {
+      margin-bottom: 0.75rem;
+    }
+
+    .intro-text strong {
+      color: #1d3557;
+      font-weight: 600;
+    }
+
+    .tagline {
+      background: #e5f0ee;
+      border-radius: 60px;
+      padding: 0.4rem 1.2rem;
+      display: inline-block;
+      font-size: 0.85rem;
+      color: #1d5a56;
+      font-weight: 500;
+      margin-top: 0.5rem;
+    }
+
+    /* 使用建议区块 */
+    .usage-note {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem;
+      margin: 1.8rem 0 1.2rem;
+      border: 1px solid #d9eae7;
+    }
+
+    .usage-note h2 {
+      font-size: 1.25rem;
+      font-weight: 550;
+      color: #1e3a5f;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .usage-note h2 span {
+      background: #2a9d8f;
+      color: white;
+      font-size: 0.9rem;
+      border-radius: 30px;
+      padding: 0 0.7rem;
+      line-height: 1.6;
+      margin-left: 0.3rem;
+    }
+
+    .usage-note ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .usage-note li {
+      padding: 0.3rem 0 0.3rem 1.6rem;
+      position: relative;
+    }
+
+    .usage-note li::before {
+      content: "▹";
+      color: #2a9d8f;
+      font-weight: bold;
+      position: absolute;
+      left: 0.1rem;
+    }
+
+    /* 提示区（FAQ摘要） */
+    .faq-summary {
+      margin: 2rem 0 1.5rem;
+      background: #fff;
+      border-radius: 24px;
+      padding: 1.3rem 1.4rem;
+      border: 1px solid #cfe2de;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.15rem;
+      font-weight: 550;
+      color: #1e3a5f;
+      margin-bottom: 0.7rem;
+    }
+
+    .faq-item {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed #d1e3df;
+      padding-bottom: 0.7rem;
+    }
+
+    .faq-item:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .faq-q {
+      font-weight: 550;
+      color: #1d3557;
+      font-size: 0.95rem;
+    }
+
+    .faq-a {
+      font-size: 0.9rem;
+      color: #38505f;
+      margin-top: 0.15rem;
+    }
+
+    /* 可信说明 - 克制 */
+    .trust-note {
+      background: #ecf6f3;
+      padding: 1rem 1.3rem;
+      border-radius: 18px;
+      font-size: 0.9rem;
+      color: #1d4a47;
+      margin: 1.2rem 0 2rem;
+      border-left: 6px solid #2a9d8f;
+    }
+
+    .trust-note strong {
+      color: #14423e;
+    }
+
+    a {
+      color: #1d6f64;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border 0.15s;
+    }
+
+    a:hover {
+      border-bottom: 1px solid #2a9d8f;
+      color: #11544a;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid #c9dbd6;
+      font-size: 0.8rem;
+      color: #4d6b65;
+      text-align: center;
+    }
+
+    .footer span {
+      background: #e2efeb;
+      padding: 0.1rem 0.6rem;
+      border-radius: 40px;
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .card {
+        padding: 1.2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- hero 摘要 -->
+    <div class="hero">
+      <h1>必一体育 · 产品概要</h1>
+      <div class="sub">运动数据 · 轻量工具 · 稳定可靠</div>
+    </div>
+
+    <!-- 介绍段落 -->
+    <div class="intro-text">
+      <p>
+        <strong>必一体育</strong> 是一个面向运动爱好者与轻度训练者的信息站点，
+        提供运动资讯、基础数据工具以及训练思路的参考内容。
+        站内内容围绕日常运动场景整理，不涉及专业医疗建议或竞技级别的分析，
+        适合大多数希望在运动中获得清晰参考的人浏览。
+      </p>
+      <p>
+        无论是想了解某项运动的基本规则，还是需要一份简单的训练节奏建议，
+        <a href="https://init-biyisport.com">必一体育</a> 的内容都以平实、
+        可直接查阅的方式呈现。站点不收集个人运动数据，也不要求注册或登录，
+        仅作为开放的信息页面存在。
+      </p>
+      <span class="tagline">📋 整理向 · 非商业 · 轻信息</span>
+    </div>
+
+    <!-- 卡片网格：亮点 + 特点 -->
+    <div class="card-grid">
+      <div class="card">
+        <h3>清晰的内容分类</h3>
+        <p>按运动类型、训练阶段、常见问题分组，信息层级简单，浏览时不需要反复跳转。</p>
+      </div>
+      <div class="card">
+        <h3>无账户体系</h3>
+        <p>所有页面均可直接访问，不需要创建账号、绑定手机或授权任何隐私权限。</p>
+      </div>
+      <div class="card">
+        <h3>移动端优先</h3>
+        <p>页面针对手机屏幕调整了字体、间距与卡片比例，在平板上也有稳定的阅读体验。</p>
+      </div>
+      <div class="card">
+        <h3>常规更新</h3>
+        <p>内容维持月度补充与修正，不堆积过时信息，但也不追求频繁推送。</p>
+      </div>
+    </div>
+
+    <!-- 使用建议 -->
+    <div class="usage-note">
+      <h2>📌 使用建议 <span>参考</span></h2>
+      <ul>
+        <li>建议将必一体育作为运动前的背景了解渠道，而非唯一的训练依据。</li>
+        <li>站内涉及的动作描述或计划示例，请结合自身状况与场地条件判断适用性。</li>
+        <li>部分外部链接仅用作补充参考，不构成背书或推荐。</li>
+        <li>如遇到与健康或体能相关的具体问题，请优先咨询持证教练或医生。</li>
+      </ul>
+    </div>
+
+    <!-- FAQ 摘要（亮点式） -->
+    <div class="faq-summary">
+      <h2>❓ 常见问题摘要</h2>
+      <div class="faq-item">
+        <span class="faq-q">必一体育适合哪些人？</span>
+        <span class="faq-a">运动入门者、日常训练者，以及想快速查找某项运动要点的普通人群。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">需要下载软件吗？</span>
+        <span class="faq-a">不需要。必一体育是网页形式，通过浏览器直接访问即可，没有独立App。</span>
+      </div>
+      <div class="faq-item">
+        <span class="faq-q">信息会经常变动吗？</span>
+        <span class="faq-a">内容会定期校准，但不会每日更新。重大规则或建议调整时会标注修订时间。</span>
+      </div>
+    </div>
+
+    <!-- 可信但克制的访问说明 -->
+    <div class="trust-note">
+      <strong>🔍 访问说明</strong><br>
+      必一体育为独立信息页面，非电商、非社交平台。站内不嵌入第三方跟踪脚本，
+      不弹出强制广告。所有超链接（包括指向必一体育主站的内容）均采用标准 HTTPS 协议。
+      如果你对内容有任何疑问，可通过站内提供的联系邮箱（位于“关于”页）提出。
+    </div>
+
+    <div style="margin: 0.5rem 0 1rem; text-align: center;">
+      <p style="color: #2b5b56; background: #e5f3f0; display: inline-block; padding: 0.2rem 1.2rem; border-radius: 40px; font-size: 0.9rem;">
+        ⚡ 主站：<a href="https://init-biyisport.com">必一体育</a>
+      </p>
+    </div>
+
+    <div class="footer">
+      <span>内容说明页 · 仅供信息参考</span> &nbsp;|&nbsp; 无注册 · 无追踪
+    </div>
+  </div>
+</body>
+</html>
